@@ -5,7 +5,6 @@
  */
 package project3;
 
-
 import newpackage.Person;
 import java.io.IOException;
 import java.net.URL;
@@ -17,6 +16,7 @@ import javafx.scene.control.TextField;
 import javax.xml.ws.Action;
 import java.util.ArrayList;
 import javafx.scene.control.TextArea;
+
 /**
  * FXML Controller class
  *
@@ -36,24 +36,24 @@ public class FXMLCreateController implements Initializable {
     String username;
     String password;
     String email;
-    
-    
-    //ArrayList<Person> people = new ArrayList<>();
-    /**
-     * Initializes the controller class.
-     */
+
+    @FXML
+    private TextArea output;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-   
-      @FXML
+    }
+
+    //method sets new user email
+    @FXML
     void setEmail(ActionEvent event) {
 
         String e = userCommand6.getText();
         email = e;
     }
 
+    //method sets new first name    
     @FXML
     void setFirstName(ActionEvent event) {
 
@@ -62,6 +62,7 @@ public class FXMLCreateController implements Initializable {
 
     }
 
+    //method sets new user last name
     @FXML
     void setLastName(ActionEvent event) {
 
@@ -70,23 +71,24 @@ public class FXMLCreateController implements Initializable {
 
     }
 
+    //method sets new user password
     @FXML
     void setPassword(ActionEvent event) {
         String passw = userCommand5.getText();
         password = passw;
 
-
     }
 
+    //method sets new user position
     @FXML
     void setPosition(ActionEvent event) {
-        
-        String p = userCommand.getText();
-        position= p;
 
+        String p = userCommand.getText();
+        position = p;
 
     }
 
+    //method sets new user userName
     @FXML
     void setUsername(ActionEvent event) {
 
@@ -94,29 +96,17 @@ public class FXMLCreateController implements Initializable {
         username = uname;
 
     }
-    
+
+    //method creates new usr, adds it to person and to HasMap
     @FXML
-    void doCreate(ActionEvent event) throws IOException { 
-        
+    void doCreate(ActionEvent event) throws IOException {
+
         Person p = new Person(position, Firstname, Lastname, username, password, email);
         Project3.people.add(p);
-        output.appendText("This new user has been added: \n"+ p.getUser());
+        output.appendText("This new user has been added: \n" + p.getUser());
         System.out.print(p.getUser());
-        
+
         Project3.cmd.addUser(username, password);
-         
-    }
-    
-  
-    @FXML
-    private TextArea output;
-    {
-        
-    }
-    
-    
 
+    }
 }
-    
-    
-
